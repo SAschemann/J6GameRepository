@@ -185,7 +185,7 @@ public class GameGUI extends javax.swing.JFrame {
     
     //Use this method to set the prompts for continuing to view text on a computer terminal. 
     public void contComputerTerm(){
-        jButton1.setText(">");
+        jButton1.setText("Continue Reading");
         jButton2.setVisible(false);
         jButton3.setVisible(false);
         jButton4.setVisible(false);
@@ -193,7 +193,7 @@ public class GameGUI extends javax.swing.JFrame {
     
     //Use this method to set the prompts for concluding to view text on a computer terminal. Should be called only after contComputerTerm() is called.
     public void contComputerTermConclude(){
-        jButton1.setText("Conclude Reading");
+        jButton1.setText(">");
     }
     
     public void setTwoOptions(String Op1, String Op2){
