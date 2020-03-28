@@ -22,7 +22,7 @@ public class GameGUI extends javax.swing.JFrame {
         //declare a vaultrooms object to call the starting method on
         VaultRooms vRooms = new VaultRooms();
         //this method call using the vRooms object created here sets the prompt and options for the first "room" at the start of the game.
-        vRooms.example();
+        vRooms.start();
     }
 
     /**
@@ -256,9 +256,17 @@ public class GameGUI extends javax.swing.JFrame {
     
         //This is an example of what a room method would look like. It contains method calls to the game screen class's methods that set the prompt and 
         //options text. These options are able to be called on the game screen class because this is a nested class.
-        public void example(){
+        public void start(){
             setPrompt("You slowly wake up and begin to look around. You're unsure of where you are, and as your vision clears, you take stock of what's around you." + 
                     " There is a computer terminal in the corner, a dead body on the floor, and two doors. One door leads to a hallway, " +
+                    "and another door appears to lead to a dead end. You notice a stripe on your left arm near the wrist paler than the rest of your skin, as if some item is "+
+                    "missing.");
+            
+            setAllOptions("Go out the door", "Inspect dead end", "Inspect terminal", "Inspect body");
+        }
+        
+        public void startCont(){
+            setPrompt("There is a computer terminal in the corner, a dead body on the floor, and two doors. One door leads to a hallway, " +
                     "and another door appears to lead to a dead end. You notice a stripe on your left arm near the wrist paler than the rest of your skin, as if some item is "+
                     "missing.");
             
@@ -267,7 +275,7 @@ public class GameGUI extends javax.swing.JFrame {
         public void exampleCont(){
             setPrompt("This is the second room. First Option goes back to the first room.");
             
-            setAllOptions("Go to first room", "does nothing yet", "this option does nothing yet", "this option does nothing yet");
+            setAllOptions("Go back", "does nothing yet", "this option does nothing yet", "this option does nothing yet");
         }
         
         public void firstDeadEndRoom(){
@@ -353,13 +361,40 @@ public class GameGUI extends javax.swing.JFrame {
                             
                         }//end of internal switch statement for room "start"
                     break;
+                    
+                    case "startCont":
+                        switch(option){
+                            case "Option1":
+                                exampleCont();
+                                passedPlayer.updatePosition("exampleCont");                                
+                            break;
+                            case "Option2":
+                                firstDeadEndRoom();
+                                passedPlayer.updatePosition("firstDeadEnd");                                
+                            break;
+                            case "Option3":
+                                firstTerminalPartOne();
+                                passedPlayer.updatePosition("firstTerminalPartOne");                                
+                            break;
+                            case "Option4":
+                                if(passedPlayer.inquirePipBoy() == false){
+                                    inspectDeadBody();
+                                    passedPlayer.updatePosition("deadBody");
+                                }
+                                else{
+                                    inspectDeadBodyHasPipBoy();
+                                    passedPlayer.updatePosition("deadBodyEquipped");
+                                }                                
+                            break;
+                        }
+                    break;
                         
                     case "exampleCont":
                         switch (option){
                             
                             case "Option1":
-                                example();
-                                passedPlayer.updatePosition("start");
+                                startCont();
+                                passedPlayer.updatePosition("startCont");
                                 break;
                                 
                         }//end of internal switch statement for room "exampleCont"
@@ -369,8 +404,8 @@ public class GameGUI extends javax.swing.JFrame {
                         switch (option){
                             
                             case "Option1":
-                                example();
-                                passedPlayer.updatePosition("start");
+                                startCont();
+                                passedPlayer.updatePosition("startCont");
                                 break;
                                 
                         }//end of internal switch statement for room "exampleOfOneButton"
@@ -391,8 +426,8 @@ public class GameGUI extends javax.swing.JFrame {
                         switch (option){
                             
                             case "Option1":
-                                example();
-                                passedPlayer.updatePosition("start");
+                                startCont();
+                                passedPlayer.updatePosition("startCont");
                             break;
                                 
                         }//end of intenral switch statement for room "firstTerminalPartTwo
@@ -403,13 +438,13 @@ public class GameGUI extends javax.swing.JFrame {
                                 
                                 case "Option1":
                                     passedPlayer.equipPipBoy();
-                                    example();
-                                    passedPlayer.updatePosition("start");
+                                    startCont();
+                                    passedPlayer.updatePosition("startCont");
                                 break;
                                 
                                 case "Option2":
-                                    example();
-                                    passedPlayer.updatePosition("start");
+                                    startCont();
+                                    passedPlayer.updatePosition("startCont");
                                 break;
                         }//end of internal switch statement for room "deadBody"
                     break;
@@ -418,8 +453,8 @@ public class GameGUI extends javax.swing.JFrame {
                         switch(option){
                             
                             case "Option1":
-                                example();
-                                passedPlayer.updatePosition("start");
+                                startCont();
+                                passedPlayer.updatePosition("startCont");
                             break;
                         }
                     break;
