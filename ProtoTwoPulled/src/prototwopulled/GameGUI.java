@@ -257,11 +257,12 @@ public class GameGUI extends javax.swing.JFrame {
         //This is an example of what a room method would look like. It contains method calls to the game screen class's methods that set the prompt and 
         //options text. These options are able to be called on the game screen class because this is a nested class.
         public void example(){
-            setPrompt("This is the first room example. There is a computer terminal in the corner, a dead body on the floor, and two doors. One door leads to a hallway, " +
+            setPrompt("You slowly wake up and begin to look around. You're unsure of where you are, and as your vision clears, you take stock of what's around you." + 
+                    " There is a computer terminal in the corner, a dead body on the floor, and two doors. One door leads to a hallway, " +
                     "and another door appears to lead to a dead end. You notice a stripe on your left arm near the wrist paler than the rest of your skin, as if some item is "+
                     "missing.");
             
-            setAllOptions("Go out the door", "Dead End room example", "Inspect terminal", "Inspect body");
+            setAllOptions("Go out the door", "Inspect dead end", "Inspect terminal", "Inspect body");
         }
         public void exampleCont(){
             setPrompt("This is the second room. First Option goes back to the first room.");
@@ -269,8 +270,11 @@ public class GameGUI extends javax.swing.JFrame {
             setAllOptions("Go to first room", "does nothing yet", "this option does nothing yet", "this option does nothing yet");
         }
         
-        public void exampleOfOneButton(){
-            setPrompt("This is an example of a room with only one option");
+        public void firstDeadEndRoom(){
+            setPrompt("You enter the adjacent room. The general back alley ambiance of this room is so rotten, so incredibly foul. "
+                    + "How long had you been lying outside this room? Who was responsible for the political propaganda plastering every wall?" + 
+                    " What could possibly be made of these black and white photos strewn about, all copies of the same blurry photo, what you figure to be lights in the night sky." +
+                    " You tip over a pyramid of empty liquor bottles, and they clatter to the ground.");
             
             setOneOption("Go back to the previous room");
         }
@@ -321,8 +325,8 @@ public class GameGUI extends javax.swing.JFrame {
                                 break;
                             
                             case "Option2":
-                                exampleOfOneButton();
-                                passedPlayer.updatePosition("exampleOfOneButton");
+                                firstDeadEndRoom();
+                                passedPlayer.updatePosition("firstDeadEnd");
                                 break;
                             
                             case "Option3":
@@ -350,7 +354,7 @@ public class GameGUI extends javax.swing.JFrame {
                         }//end of internal switch statement for room "exampleCont"
                         break;
                         
-                    case "exampleOfOneButton":
+                    case "firstDeadEnd":
                         switch (option){
                             
                             case "Option1":
