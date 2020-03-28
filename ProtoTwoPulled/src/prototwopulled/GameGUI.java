@@ -297,6 +297,11 @@ public class GameGUI extends javax.swing.JFrame {
                     "A pipboy is on the body's wrist.");
             setTwoOptions("Take the Pipboy!", "Don't take the Pipboy.");
         }
+        
+        public void inspectDeadBodyHasPipBoy(){
+            setPrompt("This dead body appears to be in a vault jumpsuit three sizes too big. Cause of death isn't apparent, but you're not a doctor, so don't feel bad.");
+            setOneOption("Enough morbid consideration");
+        }
     }//end of vault rooms class
     
     //This is the vault logic class. It contains the switch statements. The big switch statement has as its cases the "rooms" of the game. It gets the player
@@ -335,13 +340,19 @@ public class GameGUI extends javax.swing.JFrame {
                             break;
                             
                             case "Option4":
-                                inspectDeadBody();
-                                passedPlayer.updatePosition("deadBody");
+                                if(passedPlayer.inquirePipBoy() == false){
+                                    inspectDeadBody();
+                                    passedPlayer.updatePosition("deadBody");
+                                }
+                                else{
+                                    inspectDeadBodyHasPipBoy();
+                                    passedPlayer.updatePosition("deadBodyEquipped");
+                                }
                              break;
                                 
                             
                         }//end of internal switch statement for room "start"
-                        break;
+                    break;
                         
                     case "exampleCont":
                         switch (option){
@@ -352,7 +363,7 @@ public class GameGUI extends javax.swing.JFrame {
                                 break;
                                 
                         }//end of internal switch statement for room "exampleCont"
-                        break;
+                    break;
                         
                     case "firstDeadEnd":
                         switch (option){
@@ -363,7 +374,7 @@ public class GameGUI extends javax.swing.JFrame {
                                 break;
                                 
                         }//end of internal switch statement for room "exampleOfOneButton"
-                        break;
+                    break;
                         
                     case "firstTerminalPartOne":
                         switch (option){
@@ -374,7 +385,7 @@ public class GameGUI extends javax.swing.JFrame {
                             break;
                                 
                         }//end of internal switch statement for room "firstTerminalPartOne"
-                        break;
+                    break;
                         
                     case "firstTerminalPartTwo":
                         switch (option){
@@ -385,7 +396,7 @@ public class GameGUI extends javax.swing.JFrame {
                             break;
                                 
                         }//end of intenral switch statement for room "firstTerminalPartTwo
-                        break;
+                    break;
                     
                     case "deadBody":
                         switch (option){
@@ -401,6 +412,16 @@ public class GameGUI extends javax.swing.JFrame {
                                     passedPlayer.updatePosition("start");
                                 break;
                         }//end of internal switch statement for room "deadBody"
+                    break;
+                    
+                    case "deadBodyEquipped":
+                        switch(option){
+                            
+                            case "Option1":
+                                example();
+                                passedPlayer.updatePosition("start");
+                            break;
+                        }
                     break;
                     
             }//end of external switch statement
