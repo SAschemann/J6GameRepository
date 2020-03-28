@@ -17,6 +17,7 @@ public class GameGUI extends javax.swing.JFrame {
         initComponents();
         setLocation(415,100);
         setResizable(false);
+        jLabel1.setVisible(false);
         //set internalplayer variable to the player variable which is passed in
         internalPlayer = player;
         //declare a vaultrooms object to call the starting method on
@@ -41,6 +42,7 @@ public class GameGUI extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Escape Vault 23");
@@ -109,6 +111,13 @@ public class GameGUI extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel1.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 255, 51));
+        jLabel1.setText("Pip Boy: Equipped");
+        jLabel1.setFocusable(false);
+        jLabel1.setOpaque(true);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -126,13 +135,19 @@ public class GameGUI extends javax.swing.JFrame {
                         .addGap(65, 65, 65)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 735, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(63, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -246,6 +261,7 @@ public class GameGUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
@@ -282,7 +298,7 @@ public class GameGUI extends javax.swing.JFrame {
             setPrompt("You enter the adjacent room. The general back alley ambiance of this room is so rotten, so incredibly foul. "
                     + "How long had you been lying outside this room? Who was responsible for the political propaganda plastering every wall?" + 
                     " What could possibly be made of these black and white photos strewn about, all copies of the same blurry photo, what you figure to be lights in the night sky." +
-                    " You tip over a pyramid of empty liquor bottles, and they clatter to the ground.");
+                    " 'Death to the Observer' is spray painted on the ceiling. You tip over a pyramid of empty liquor bottles, and they clatter to the ground.");
             
             setOneOption("Go back to the previous room");
         }
@@ -438,6 +454,7 @@ public class GameGUI extends javax.swing.JFrame {
                                 
                                 case "Option1":
                                     passedPlayer.equipPipBoy();
+                                    jLabel1.setVisible(true);
                                     startCont();
                                     passedPlayer.updatePosition("startCont");
                                 break;
