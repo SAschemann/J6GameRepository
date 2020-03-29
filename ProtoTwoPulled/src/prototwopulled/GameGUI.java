@@ -192,6 +192,7 @@ public class GameGUI extends javax.swing.JFrame {
     
     //Use this method to set the prompts for one option
     public void setOneOption(String Op1){
+        jButton1.setVisible(true);
         jButton1.setText(Op1);
         jButton2.setVisible(false);
         jButton3.setVisible(false);
@@ -200,6 +201,7 @@ public class GameGUI extends javax.swing.JFrame {
     
     //Use this method to set the prompts for continuing to view text on a computer terminal. 
     public void contComputerTerm(){
+        jButton1.setVisible(true);
         jButton1.setText("Continue Reading");
         jButton2.setVisible(false);
         jButton3.setVisible(false);
@@ -212,6 +214,8 @@ public class GameGUI extends javax.swing.JFrame {
     }
     
     public void setTwoOptions(String Op1, String Op2){
+        jButton1.setVisible(true);
+        jButton2.setVisible(true);
         jButton1.setText(Op1);
         jButton2.setText(Op2);
         jButton3.setVisible(false);
@@ -288,10 +292,12 @@ public class GameGUI extends javax.swing.JFrame {
             
             setAllOptions("Go out the door", "Inspect dead end", "Inspect terminal", "Inspect body");
         }
-        public void exampleCont(){
-            setPrompt("This is the second room. First Option goes back to the first room.");
+        public void firstHallway(){
+            setPrompt("You enter the hallway off the room you woke up in. The door to that room is behind you. The hallway is deserted and red emergency" +
+                    " lights running along the ceiling illuminate it. There are two doors on the wall opposite you, and a door at the end of the hallway." +
+                    " The doors opposite you are labeled 'bunkhouse' and 'shower/fitness room' respectively.");
             
-            setAllOptions("Go back", "does nothing yet", "this option does nothing yet", "this option does nothing yet");
+            setAllOptions("Go back", "Take door at end of the hallway", "Enter bunkhouse", "Enter shower/fitness room");
         }
         
         public void firstDeadEndRoom(){
@@ -326,6 +332,28 @@ public class GameGUI extends javax.swing.JFrame {
             setPrompt("This dead body appears to be in a vault jumpsuit three sizes too big. Cause of death isn't apparent, but you're not a doctor, so don't feel bad.");
             setOneOption("Enough morbid consideration");
         }
+        
+        public void endOfHallDoor(){
+            
+        }
+        
+        public void bunkhouse(){
+            setPrompt("A corridor divides this room, and on either side there are a half dozen more doors, " +
+                    "presumambly behind which are the actual bunkrooms. The same red emergency lighting is in use here.");
+            setTwoOptions("Go back to hallway", "Check the nearest bunkroom");
+        }
+        
+        public void bunkroom(){
+            setPrompt("This is a tiny living space. A twin bed takes up more than half the space, and a wash basin and chair take up the rest. The concrete walls are unpainted.");
+            setOneOption("Go back to the bunkhouse");
+        }
+        
+        public void showerRoom(){
+            setPrompt("The fitness and shower room looks untouched since whenever it was last used. Dumbbells line one of the walls, and a variety of nice exercise machines" +
+                    " are arranged in a neat pattern. A door marked showers is open, and you can see that it is a tiled room with a row of shower heads along one wall"+
+                    "and lockers on the other. This room is vacant and was well cared for.");
+            setOneOption("Go back to hallway");
+        }
     }//end of vault rooms class
     
     //This is the vault logic class. It contains the switch statements. The big switch statement has as its cases the "rooms" of the game. It gets the player
@@ -349,8 +377,8 @@ public class GameGUI extends javax.swing.JFrame {
                         switch (option) {
                             
                             case "Option1":
-                                exampleCont();
-                                passedPlayer.updatePosition("exampleCont");
+                                firstHallway();
+                                passedPlayer.updatePosition("firstHallway");
                                 break;
                             
                             case "Option2":
@@ -381,8 +409,8 @@ public class GameGUI extends javax.swing.JFrame {
                     case "startCont":
                         switch(option){
                             case "Option1":
-                                exampleCont();
-                                passedPlayer.updatePosition("exampleCont");                                
+                                firstHallway();
+                                passedPlayer.updatePosition("firstHallway");                                
                             break;
                             case "Option2":
                                 firstDeadEndRoom();
@@ -405,13 +433,28 @@ public class GameGUI extends javax.swing.JFrame {
                         }
                     break;
                         
-                    case "exampleCont":
+                    case "firstHallway":
                         switch (option){
                             
                             case "Option1":
                                 startCont();
                                 passedPlayer.updatePosition("startCont");
-                                break;
+                            break;
+                            
+                            case "Option2":
+                                endOfHallDoor();
+                                passedPlayer.updatePosition("endOfHallDoor");
+                            break;
+                            
+                            case "Option3":
+                                bunkhouse();
+                                passedPlayer.updatePosition("bunkhouse");
+                            break;
+                            
+                            case "Option4":
+                                showerRoom();
+                                passedPlayer.updatePosition("showerRoom");
+                            break;
                                 
                         }//end of internal switch statement for room "exampleCont"
                     break;
@@ -472,6 +515,38 @@ public class GameGUI extends javax.swing.JFrame {
                             case "Option1":
                                 startCont();
                                 passedPlayer.updatePosition("startCont");
+                            break;
+                        }
+                    break;
+                    
+                    case "showerRoom":
+                        switch(option){
+                            case "Option1":
+                                firstHallway();
+                                passedPlayer.updatePosition("firstHallway");
+                            break;
+                        }
+                    break;
+                    
+                    case "bunkhouse":
+                        switch(option){
+                            case "Option1":
+                                firstHallway();
+                                passedPlayer.updatePosition("firstHallway");
+                            break;
+                            
+                            case "Option2":
+                                bunkroom();
+                                passedPlayer.updatePosition("bunkroom");
+                            break;
+                        }
+                    break;
+                    
+                    case "bunkroom":
+                        switch(option){
+                            case "Option1":
+                                bunkhouse();
+                                passedPlayer.updatePosition("bunkhouse");
                             break;
                         }
                     break;
