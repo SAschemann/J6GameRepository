@@ -3,6 +3,8 @@
     There are two nested classes here, and were nested so that they could change the prompts and options texts.
 */
 package prototwopulled;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class GameGUI extends javax.swing.JFrame {
 
