@@ -222,6 +222,15 @@ public class GameGUI extends javax.swing.JFrame {
         jButton4.setVisible(false);
     }
     
+    public void setThreeOptions(String Op1, String Op2, String Op3){
+        jButton1.setVisible(true);
+        jButton2.setVisible(true);
+        jButton3.setVisible(true);
+        jButton4.setVisible(false);
+        jButton1.setText(Op1);
+        jButton2.setText(Op2);
+        jButton3.setText(Op3);
+    }
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //This is what happens when a button is clicked. The variable option is set to a string for this option, then
@@ -336,7 +345,9 @@ public class GameGUI extends javax.swing.JFrame {
         }
         
         public void endOfHallDoor(){
-            
+            setPrompt("Before you is a staircase leading up. Just isnide this door there is a room marked 'Maintenance Closet' on your left. Behind you is "
+            + "the hallway you just came from.");
+            setThreeOptions("Go back", "Maintenance Closet", "Go Upstairs");
         }
         
         public void bunkhouse(){
@@ -355,6 +366,24 @@ public class GameGUI extends javax.swing.JFrame {
                     " are arranged in a neat pattern. A door marked showers is open, and you can see that it is a tiled room with a row of shower heads along one wall"+
                     " and lockers on the other. This room is vacant and was well cared for.");
             setOneOption("Go back to hallway");
+        }
+        
+        public void upStairsLanding(){
+            setPrompt("You find yourself on the landing of the main floor. The stairs you came up are behind you. You can see a room marked 'Observer's Office'"
+            + ". Opposite you there appears to be a railing. To the left of where you are, is the vault door. It looks like a door to the world's biggest safe.");
+            setAllOptions("Go back", "Look over railing", "Inspect vault door", "Go to 'Observer's Office'");
+        }
+        
+        public void maintenanceCloset(){
+            setPrompt("It's a small maintenance closet. A small tool box and cleaning supplies are scattered about on the floor. On the wall, surrounded by yellow"
+            + " signs with warnings such as 'Caution! High Voltage' is an open breaker box. Several breakers appear to have been ripped out and two wires are " 
+            + "arcing menacingly. The wire(and the air) crackles with possibilities.");
+            setTwoOptions("Go back", "Touch the wires!");
+        }
+        
+        public void arcingWires(){
+            setPrompt("You grab hold and are electrocuted. You try to let go but cannot, the electricity forcing your hands to grasp the wires tighter. Images "
+            + "flash through your mind, mostly nonsensical. After several more seconds, you succumb to electrocution.");
         }
     }//end of vault rooms class
     
@@ -550,6 +579,44 @@ public class GameGUI extends javax.swing.JFrame {
                             break;
                         }//end of internal switch statement for room bunkroom
                     break;
+                    
+                    case "endOfHallDoor":
+                        switch(option){
+                            case "Option1":
+                                firstHallway();
+                                passedPlayer.updatePosition("firstHallway");
+                            break;
+                            case "Option2":
+                                maintenanceCloset();
+                                passedPlayer.updatePosition("maintenacneCloset");                                
+                            break;
+                            case "Option3":
+                                upStairsLanding();
+                                passedPlayer.updatePosition("upStairsLanding");
+                            break;
+                        }//end of room endofhalllanding nested switch statement
+                    break;
+                    
+                    case "maintenanceCloset":
+                        switch(option){
+                            case "Option1":
+                                endOfHallDoor();
+                                passedPlayer.updatePosition("endOfHallDoor");
+                            break;
+                            case "Option2":
+                                arcingWires();
+                                passedPlayer.updatePosition("arcingWires");
+                            break;
+                        }//end of room maintenancecloset internal switch statement
+                    break;
+                    
+                    case "arcingWires":
+                        switch(option){
+                            case "Option1":
+                            break;
+                        }//end of arcingwires room internal switch statement
+                    break;
+                    
                     
             }//end of external switch statement
             return passedPlayer;
