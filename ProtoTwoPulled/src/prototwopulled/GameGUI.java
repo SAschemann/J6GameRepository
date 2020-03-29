@@ -310,14 +310,16 @@ public class GameGUI extends javax.swing.JFrame {
         }
         
         public void firstTerminalPartOne(){
-            setPrompt("This is some text on the computer terminal. Imagine this message was too big to fit on one screen. You should click the button below to see the rest of " + 
-                    "the text.");
+            setPrompt("The terminal is currently displaying messages from the observer. 'The Interloper,' he writes, 'Has caused nothing but trouble since their arrival." 
+            + " They are too rowdy and speak nonsense about lights in the sky. And that dreaded cat they brought with them got loose in the ventilation system. I wish"
+            + " we could return to the way things were before their arrival.' You click to read the next message.");
             
             contComputerTerm();
         }
         
         public void firstTerminalPartTwo(){
-            setPrompt("This is the continuation of the information on the first temrinal.");
+            setPrompt("'The Interloper has now begun spreading their dreadful idealogy and the other residents are beginning to wonder about the lights in their blurry photo." 
+            + " In addition, that dreadful cat is still missing in the ventilation sytstem despite our efforts to locate it. I fear a showdown between they and myself is inevitable.'");
             
             contComputerTermConclude();
         }
@@ -351,7 +353,7 @@ public class GameGUI extends javax.swing.JFrame {
         public void showerRoom(){
             setPrompt("The fitness and shower room looks untouched since whenever it was last used. Dumbbells line one of the walls, and a variety of nice exercise machines" +
                     " are arranged in a neat pattern. A door marked showers is open, and you can see that it is a tiled room with a row of shower heads along one wall"+
-                    "and lockers on the other. This room is vacant and was well cared for.");
+                    " and lockers on the other. This room is vacant and was well cared for.");
             setOneOption("Go back to hallway");
         }
     }//end of vault rooms class
