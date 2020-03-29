@@ -214,10 +214,10 @@ public class GameGUI extends javax.swing.JFrame {
     }
     
     public void setTwoOptions(String Op1, String Op2){
-        jButton1.setVisible(true);
-        jButton2.setVisible(true);
         jButton1.setText(Op1);
         jButton2.setText(Op2);
+        jButton1.setVisible(true);
+        jButton2.setVisible(true);
         jButton3.setVisible(false);
         jButton4.setVisible(false);
     }
@@ -384,6 +384,7 @@ public class GameGUI extends javax.swing.JFrame {
         public void arcingWires(){
             setPrompt("You grab hold and are electrocuted. You try to let go but cannot, the electricity forcing your hands to grasp the wires tighter. Images "
             + "flash through your mind, mostly nonsensical. After several more seconds, you succumb to electrocution.");
+            setOneOption("Game Over!");
         }
     }//end of vault rooms class
     
@@ -586,10 +587,12 @@ public class GameGUI extends javax.swing.JFrame {
                                 firstHallway();
                                 passedPlayer.updatePosition("firstHallway");
                             break;
+                            
                             case "Option2":
                                 maintenanceCloset();
-                                passedPlayer.updatePosition("maintenacneCloset");                                
+                                passedPlayer.updatePosition("maintenanceCloset");                                
                             break;
+                            
                             case "Option3":
                                 upStairsLanding();
                                 passedPlayer.updatePosition("upStairsLanding");
@@ -603,19 +606,23 @@ public class GameGUI extends javax.swing.JFrame {
                                 endOfHallDoor();
                                 passedPlayer.updatePosition("endOfHallDoor");
                             break;
+                            
                             case "Option2":
                                 arcingWires();
                                 passedPlayer.updatePosition("arcingWires");
                             break;
-                        }//end of room maintenancecloset internal switch statement
+                        }//end of room maintenance closet internal switch statement
                     break;
                     
                     case "arcingWires":
                         switch(option){
                             case "Option1":
+                                ProtoGUI gameOverGui = new ProtoGUI();
+                                gameOverGui.setVisible(true);
+                                dispose();
                             break;
-                        }//end of arcingwires room internal switch statement
-                    break;
+                        }//end of room arcing wires 
+                    
                     
                     
             }//end of external switch statement
