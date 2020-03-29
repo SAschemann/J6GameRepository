@@ -402,9 +402,7 @@ public class GameGUI extends javax.swing.JFrame {
                                     inspectDeadBodyHasPipBoy();
                                     passedPlayer.updatePosition("deadBodyEquipped");
                                 }
-                             break;
-                                
-                            
+                             break;                                                            
                         }//end of internal switch statement for room "start"
                     break;
                     
@@ -432,7 +430,7 @@ public class GameGUI extends javax.swing.JFrame {
                                     passedPlayer.updatePosition("deadBodyEquipped");
                                 }                                
                             break;
-                        }
+                        }//end of internal switch statement for startcont
                     break;
                         
                     case "firstHallway":
@@ -518,7 +516,7 @@ public class GameGUI extends javax.swing.JFrame {
                                 startCont();
                                 passedPlayer.updatePosition("startCont");
                             break;
-                        }
+                        }//end of internal switch statement fcr room deadbodyequipped
                     break;
                     
                     case "showerRoom":
@@ -527,7 +525,7 @@ public class GameGUI extends javax.swing.JFrame {
                                 firstHallway();
                                 passedPlayer.updatePosition("firstHallway");
                             break;
-                        }
+                        }//end of internal switch statement for room showerroom
                     break;
                     
                     case "bunkhouse":
@@ -541,7 +539,7 @@ public class GameGUI extends javax.swing.JFrame {
                                 bunkroom();
                                 passedPlayer.updatePosition("bunkroom");
                             break;
-                        }
+                        }//end of internal switch statement for room bunkhouse
                     break;
                     
                     case "bunkroom":
@@ -550,7 +548,7 @@ public class GameGUI extends javax.swing.JFrame {
                                 bunkhouse();
                                 passedPlayer.updatePosition("bunkhouse");
                             break;
-                        }
+                        }//end of internal switch statement for room bunkroom
                     break;
                     
             }//end of external switch statement
