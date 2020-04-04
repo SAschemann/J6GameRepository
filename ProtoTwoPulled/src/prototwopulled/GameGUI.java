@@ -16,6 +16,9 @@ public class GameGUI extends javax.swing.JFrame {
     //Declare a VaultLogic object to call that classes method on
     VaultLogic vLogic = new VaultLogic();
     
+    //**Declared an object of type session handler to call the session ahndler on
+    SessionHandler sesh = new SessionHandler();
+    
     
     public GameGUI(UserPlayer player) {
         initComponents();
@@ -283,7 +286,7 @@ public class GameGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jBSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSaveActionPerformed
-        //SessionHandler.save();
+        sesh.save();
         jBSave.setText("FILE SAVED!");
     }//GEN-LAST:event_jBSaveActionPerformed
 
