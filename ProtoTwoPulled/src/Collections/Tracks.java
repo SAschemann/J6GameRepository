@@ -11,7 +11,7 @@ package Collections;
  */
 public enum Tracks {
        
-    TRACK_ZERO(0, "Start Theme", "/music/TitleScreen.wav");
+    TRACK_ZERO(0, "Start Theme", "/music/Ev23.wav");
     
     private final int number;
     private final String description;
