@@ -5,15 +5,15 @@
  */
 package utilities;
 import java.io.*;
-import prototwopulled.ProtoTwo;
-import prototwopulled.UserPlayer;
+import prototwopulled.*;
+import java.lang.*;
 
 /**
  *
  * @author Scott
  */
 
-public class SessionHandler {
+public class SessionHandler implements Serializable {
     
 
     public SessionHandler(){
@@ -24,9 +24,10 @@ public class SessionHandler {
      *
      */
     public void load(){
-        UserPlayer temp;
+        UserPlayer temp = null;
+        String filename = "./data.txt";
         try{
-            FileInputStream inputFile = new FileInputStream("./data.sec");
+            FileInputStream inputFile = new FileInputStream(filename);
             ObjectInputStream objectIn =  new ObjectInputStream(inputFile);
             temp = (UserPlayer)objectIn.readObject();
             ProtoTwo.CUR_PLAYER = temp;
@@ -45,13 +46,15 @@ public class SessionHandler {
     }
   //write another method to read data from a file and insert it into CUR_Player
     public void save(){
-        UserPlayer temp = ProtoTwo.CUR_PLAYER;
+        UserPlayer temp = GameGUI.internalPlayer;
+        System.out.println(temp.getPlayerPosition());
+        String filename = "./data.txt";
         try{
-            FileOutputStream outputFile = new FileOutputStream("./data.sec");
-            ObjectOutputStream objectOut = new ObjectOutputStream(outputFile);
+            //FileOutputStream outputFile = new FileOutputStream(filename);
+            ObjectOutputStream objectOut = new ObjectOutputStream(new FileOutputStream(filename));
             objectOut.writeObject(temp);
             objectOut.close();
-            outputFile.close();
+            //outputFile.close();
         }
         catch(FileNotFoundException e){
             System.out.print("Cannot create a file at that location");
@@ -60,7 +63,7 @@ public class SessionHandler {
             System.out.print("Permission Denied!");
         }
         catch(IOException e){
-            System.out.println("Error 203");
+            System.out.println("\nError 203:\n\t" + e); e.printStackTrace();
         } 
    }
 }

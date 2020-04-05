@@ -11,7 +11,7 @@ import java.io.*;
 public class GameGUI extends javax.swing.JFrame {
 
     //Variable declarations
-    UserPlayer internalPlayer;     
+    public static UserPlayer internalPlayer;     
     String option;
     //Declare a VaultLogic object to call that classes method on
     VaultLogic vLogic = new VaultLogic();
