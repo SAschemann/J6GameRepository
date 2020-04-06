@@ -109,6 +109,7 @@ public class ProtoGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;

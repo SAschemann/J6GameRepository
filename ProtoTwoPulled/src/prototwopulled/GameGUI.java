@@ -20,6 +20,7 @@ public class GameGUI extends javax.swing.JFrame {
     SessionHandler sesh = new SessionHandler();
     
     
+    
     public GameGUI(UserPlayer player) {
         initComponents();
         setLocation(415,100);
@@ -256,6 +257,8 @@ public class GameGUI extends javax.swing.JFrame {
         option = "Option1";
         //The player object is returned from the gameLogic method so that any changes made to the user's character don't go out of scope
         internalPlayer = vLogic.gameLogic(internalPlayer, option);
+        //Resets the save prompt
+        jBSave.setText("Save");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -265,6 +268,8 @@ public class GameGUI extends javax.swing.JFrame {
         option = "Option2";
         //The player object is returned from the gameLogic method so that any changes made to the user's character don't go out of scope
         internalPlayer = vLogic.gameLogic(internalPlayer, option);
+        //Resets the save prompt
+        jBSave.setText("Save");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -274,6 +279,8 @@ public class GameGUI extends javax.swing.JFrame {
         option = "Option3";
         //The player object is returned from the gameLogic method so that any changes made to the user's character don't go out of scope
         internalPlayer = vLogic.gameLogic(internalPlayer, option);
+        //Resets the save prompt
+        jBSave.setText("Save");
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -283,6 +290,8 @@ public class GameGUI extends javax.swing.JFrame {
         option = "Option4";
         //The player object is returned from the gameLogic method so that any changes made to the user's character don't go out of scope
         internalPlayer = vLogic.gameLogic(internalPlayer, option);
+        //Resets the save prompt
+        jBSave.setText("Save");
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jBSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSaveActionPerformed

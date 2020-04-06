@@ -15,18 +15,15 @@ import java.lang.*;
 
 public class SessionHandler implements Serializable {
     
-
+    //default contructor
     public SessionHandler(){
-    }    
-  //write a method to get player info and write it to a file
-
-    /**
-     *
-     */
+    }
+    
+    //loads saved character file
+    /* commented out to temporarily to push the working save() functionality to repo
     public void load(){
-        UserPlayer temp = null;
-        String filename = "./data.txt";
         try{
+            
             FileInputStream inputFile = new FileInputStream(filename);
             ObjectInputStream objectIn =  new ObjectInputStream(inputFile);
             temp = (UserPlayer)objectIn.readObject();
@@ -44,18 +41,20 @@ public class SessionHandler implements Serializable {
             System.out.println("Error 202");
         }
     }
-  //write another method to read data from a file and insert it into CUR_Player
-    public void save(){
-        UserPlayer temp = GameGUI.internalPlayer;
-        System.out.println(temp.getPlayerPosition());
-        String filename = "./data.txt";
+    *///end of load()
+
+    
+    //saves the current state of the character to a file
+    public void save() {
         try{
-            //FileOutputStream outputFile = new FileOutputStream(filename);
-            ObjectOutputStream objectOut = new ObjectOutputStream(new FileOutputStream(filename));
-            objectOut.writeObject(temp);
-            objectOut.close();
-            //outputFile.close();
-        }
+            UserPlayer temp = GameGUI.internalPlayer;
+            System.out.println(temp.getPlayerPosition());
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("test.txt"));
+            out.writeObject(temp.getPlayerPosition());
+            out.writeObject(temp.getCurHP());
+            out.writeObject(temp.inquirePipBoy());
+            out.close();
+        }   
         catch(FileNotFoundException e){
             System.out.print("Cannot create a file at that location");
         }
@@ -65,7 +64,11 @@ public class SessionHandler implements Serializable {
         catch(IOException e){
             System.out.println("\nError 203:\n\t" + e); e.printStackTrace();
         } 
-   }
+    }
+
+    public static void load(){}
+    
+    
 }
 
 
