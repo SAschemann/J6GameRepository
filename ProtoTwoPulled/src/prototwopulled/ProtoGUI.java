@@ -4,7 +4,17 @@
 package prototwopulled;
 //git test
 public class ProtoGUI extends javax.swing.JFrame {
-
+    
+    private static boolean startingState;
+    
+    public static boolean getBeginningState(){
+        return startingState;
+    }
+    
+    public static void setBeginningState(boolean b){
+        startingState = b;
+    }
+    
 
     public ProtoGUI() {
         initComponents();
@@ -24,7 +34,8 @@ public class ProtoGUI extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        jStart = new javax.swing.JButton();
+        jBLoad = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Escape Vault 23");
@@ -43,15 +54,27 @@ public class ProtoGUI extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 204, 51));
         jLabel2.setText("Escape Vault 23");
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 0));
-        jButton2.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(51, 204, 0));
-        jButton2.setText("Play");
-        jButton2.setBorder(null);
-        jButton2.setOpaque(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jStart.setBackground(new java.awt.Color(0, 0, 0));
+        jStart.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
+        jStart.setForeground(new java.awt.Color(51, 204, 0));
+        jStart.setText("Play");
+        jStart.setBorder(null);
+        jStart.setOpaque(false);
+        jStart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jStartActionPerformed(evt);
+            }
+        });
+
+        jBLoad.setBackground(new java.awt.Color(0, 0, 0));
+        jBLoad.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
+        jBLoad.setForeground(new java.awt.Color(51, 204, 0));
+        jBLoad.setText("Load");
+        jBLoad.setBorder(null);
+        jBLoad.setOpaque(false);
+        jBLoad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLoadActionPerformed(evt);
             }
         });
 
@@ -70,19 +93,23 @@ public class ProtoGUI extends javax.swing.JFrame {
                         .addGap(103, 103, 103))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(317, 317, 317)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jStart, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBLoad, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(102, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(108, 108, 108)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(113, 113, 113))
+                .addGap(18, 18, 18)
+                .addComponent(jStart, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jBLoad, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(293, 293, 293))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -101,19 +128,29 @@ public class ProtoGUI extends javax.swing.JFrame {
 
     //This is the method for the jButton. It creates a player object and passes it as an argument to the game screen, and sets the game
     //screen to visible. 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jStartActionPerformed
+        setBeginningState(true);
         UserPlayer extPlayer = new UserPlayer();
         GameGUI gui = new GameGUI(extPlayer);
         gui.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jStartActionPerformed
+
+    private void jBLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLoadActionPerformed
+        setBeginningState(false);
+        UserPlayer extPlayer = new UserPlayer();
+        GameGUI gui = new GameGUI(extPlayer);
+        gui.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jBLoadActionPerformed
 
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jBLoad;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton jStart;
     // End of variables declaration//GEN-END:variables
 }

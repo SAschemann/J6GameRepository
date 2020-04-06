@@ -7,6 +7,8 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import utilities.SessionHandler;
 import java.io.*;
+import java.lang.reflect.*;
+
 
 public class GameGUI extends javax.swing.JFrame {
 
@@ -19,19 +21,57 @@ public class GameGUI extends javax.swing.JFrame {
     //**Declared an object of type session handler to call the session ahndler on
     SessionHandler sesh = new SessionHandler();
     
+    //grabs the boolean variable startingState from ProtoGUI used in determining
+    //whether a new game is being created or loaded
+    boolean state = ProtoGUI.getBeginningState();
+    Method METH;
     
     
     public GameGUI(UserPlayer player) {
-        initComponents();
-        setLocation(415,100);
-        setResizable(false);
-        jLabel1.setVisible(false);
-        //set internalplayer variable to the player variable which is passed in
-        internalPlayer = player;
-        //declare a vaultrooms object to call the starting method on
-        VaultRooms vRooms = new VaultRooms();
-        //this method call using the vRooms object created here sets the prompt and options for the first "room" at the start of the game.
-        vRooms.start();
+        System.out.println(state);
+        if(state){
+            System.out.println("CURRENTLY IN NEW STATE");
+            initComponents();
+            setLocation(415,100);
+            setResizable(false);
+            jLabel1.setVisible(false);
+            //set internalplayer variable to the player variable which is passed in
+            internalPlayer = player;
+            //declare a vaultrooms object to call the starting method on
+            VaultRooms vRooms = new VaultRooms();
+            //this method call using the vRooms object created here sets the prompt and options for the first "room" at the start of the game.
+            vRooms.start();
+        }
+        else if (!state){
+            System.out.println("CURRENTLY IN LOADED STATE");
+            //SessionHandler.load();
+            //System.out.println(internalPlayer.getPlayerPosition());
+            initComponents();
+            setLocation(415,100);
+            setResizable(false);
+            jLabel1.setVisible(false);
+            //set internalplayer variable to the elements in the file passed in
+            SessionHandler.load();
+            //declare a vaultrooms object to call the starting method on
+            VaultRooms vRooms = new VaultRooms();
+           // internalPlayer.
+            //String where = internalPlayer.getPlayerPosition(); //vRooms.LOADING("where");
+            //System.out.println(internalPlayer.getPlayerPosition());
+            //vRooms.LOADING(where);
+            /*METH = VaultRooms.getMethod(where);
+            METH.invoke(vRooms);
+            
+            try{
+                Class VR = 
+                Method method = 
+            }catch(Exception ex){ex.printStackTrace();}*/
+            
+            
+        }
+        else{
+            System.err.println("FATAL ERROR IN \"GameGUI\" CONSTRUCTOR METHOD!!!");
+        }
+        
     }
 
     /**
@@ -315,6 +355,11 @@ public class GameGUI extends javax.swing.JFrame {
     //This is the private nested class VaultRooms. It contains the methods which are called to set the game gui's prompts and options.
     private class VaultRooms{
     
+        public String LOADING(String where){
+            String s = where.concat("()");
+            return s;
+        }
+        
         //This is an example of what a room method would look like. It contains method calls to the game screen class's methods that set the prompt and 
         //options text. These options are able to be called on the game screen class because this is a nested class.
         public void start(){
