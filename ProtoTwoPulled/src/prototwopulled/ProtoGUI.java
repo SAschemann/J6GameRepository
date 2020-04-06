@@ -5,15 +5,7 @@ package prototwopulled;
 //git test
 public class ProtoGUI extends javax.swing.JFrame {
     
-    private static boolean startingState;
-    
-    public static boolean getBeginningState(){
-        return startingState;
-    }
-    
-    public static void setBeginningState(boolean b){
-        startingState = b;
-    }
+
     
 
     public ProtoGUI() {
@@ -129,7 +121,7 @@ public class ProtoGUI extends javax.swing.JFrame {
     //This is the method for the jButton. It creates a player object and passes it as an argument to the game screen, and sets the game
     //screen to visible. 
     private void jStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jStartActionPerformed
-        setBeginningState(true);
+
         UserPlayer extPlayer = new UserPlayer();
         GameGUI gui = new GameGUI(extPlayer);
         gui.setVisible(true);
@@ -137,9 +129,10 @@ public class ProtoGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jStartActionPerformed
 
     private void jBLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLoadActionPerformed
-        setBeginningState(false);
+
         UserPlayer extPlayer = new UserPlayer();
-        GameGUI gui = new GameGUI(extPlayer);
+        String dummyString = "";
+        GameGUI gui = new GameGUI(extPlayer, dummyString);
         gui.setVisible(true);
         dispose();
     }//GEN-LAST:event_jBLoadActionPerformed

@@ -22,7 +22,7 @@ public class ProtoTwo {
         } 
         catch (UnsupportedAudioFileException | IOException | 
                 LineUnavailableException ex){}
-    
+   
         ProtoGUI newGUI = new ProtoGUI();
         newGUI.setVisible(true);
     }

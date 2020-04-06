@@ -23,14 +23,9 @@ public class GameGUI extends javax.swing.JFrame {
     
     //grabs the boolean variable startingState from ProtoGUI used in determining
     //whether a new game is being created or loaded
-    boolean state = ProtoGUI.getBeginningState();
-    Method METH;
     
-    
+    //New Game Constructor
     public GameGUI(UserPlayer player) {
-        System.out.println(state);
-        if(state){
-            System.out.println("CURRENTLY IN NEW STATE");
             initComponents();
             setLocation(415,100);
             setResizable(false);
@@ -41,9 +36,10 @@ public class GameGUI extends javax.swing.JFrame {
             VaultRooms vRooms = new VaultRooms();
             //this method call using the vRooms object created here sets the prompt and options for the first "room" at the start of the game.
             vRooms.start();
-        }
-        else if (!state){
-            System.out.println("CURRENTLY IN LOADED STATE");
+    }
+    
+    //Load game constructor, same as new game constructor but loads game functionality
+    public GameGUI(UserPlayer player, String str){
             //SessionHandler.load();
             //System.out.println(internalPlayer.getPlayerPosition());
             initComponents();
@@ -54,24 +50,23 @@ public class GameGUI extends javax.swing.JFrame {
             SessionHandler.load();
             //declare a vaultrooms object to call the starting method on
             VaultRooms vRooms = new VaultRooms();
-           // internalPlayer.
-            //String where = internalPlayer.getPlayerPosition(); //vRooms.LOADING("where");
-            //System.out.println(internalPlayer.getPlayerPosition());
-            //vRooms.LOADING(where);
-            /*METH = VaultRooms.getMethod(where);
-            METH.invoke(vRooms);
+            //declare a vaultlogic object to call the starting method on
+            VaultLogic vLogic = new VaultLogic();
+            //This SOP statement prints to the console to check for the player position
+            System.out.println("Before switch statement + " + internalPlayer.getPlayerPosition());
             
-            try{
-                Class VR = 
-                Method method = 
-            }catch(Exception ex){ex.printStackTrace();}*/
-            
-            
-        }
-        else{
-            System.err.println("FATAL ERROR IN \"GameGUI\" CONSTRUCTOR METHOD!!!");
-        }
-        
+            //switch statement that sets prompt and options after the user chooses to load a save, runs off internalplayer object which is 
+            //the loaded player object from the sessionhandler.load() method
+            switch (internalPlayer.getPlayerPosition()){
+                
+                //each room will need a case, but that's not so bad for a save and load feature. 
+                case "firstDeadEnd":
+                    //this sop statement checks to make sure we're getting inside the switch statement
+                    System.out.println("Inside switch statement");
+                    //this method call sets the prompt and option for the firstDeadEndRoom
+                    vLogic.firstDeadEndRoom();
+                break;
+            }
     }
 
     /**
