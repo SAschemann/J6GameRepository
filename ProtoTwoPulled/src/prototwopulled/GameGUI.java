@@ -66,7 +66,60 @@ public class GameGUI extends javax.swing.JFrame {
                     //this method call sets the prompt and option for the firstDeadEndRoom
                     vLogic.firstDeadEndRoom();
                 break;
-            }
+                
+                case "firstHallway":
+                    vLogic.firstHallway();
+                break;
+                
+                case "firstTerminalPartOne":
+                    vLogic.firstTerminalPartOne();
+                break;
+                
+                case "deadBody":
+                    vLogic.inspectDeadBody();
+                break;
+                
+                case "deadBodyEquipped":
+                    vLogic.inspectDeadBodyHasPipBoy();
+                break;
+                
+                case "startCont":
+                    vLogic.startCont();
+                break;
+                
+                case "endOfHallDoor":
+                    vLogic.endOfHallDoor();
+                break;
+                
+                case "bunkhouse":
+                    vLogic.bunkhouse();
+                break;
+                
+                case "showerRoom":
+                    vLogic.showerRoom();
+                break;
+                
+                case "firstTerminalPartTwo":
+                    vLogic.firstTerminalPartTwo();
+                break;
+                
+                case "bunkroom":
+                    vLogic.bunkroom();
+                break;
+                
+                case "maintenanceCloset":
+                    vLogic.maintenanceCloset();
+                break;
+                
+                case "upStairsLanding":
+                    vLogic.upStairsLanding();
+                break;
+                
+                case "arcingWires":
+                    vLogic.arcingWires();
+                break;
+
+            }//end of loading switch statement
     }
 
     /**
@@ -350,10 +403,6 @@ public class GameGUI extends javax.swing.JFrame {
     //This is the private nested class VaultRooms. It contains the methods which are called to set the game gui's prompts and options.
     private class VaultRooms{
     
-        public String LOADING(String where){
-            String s = where.concat("()");
-            return s;
-        }
         
         //This is an example of what a room method would look like. It contains method calls to the game screen class's methods that set the prompt and 
         //options text. These options are able to be called on the game screen class because this is a nested class.
