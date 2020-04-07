@@ -45,15 +45,26 @@ public class GameGUI extends javax.swing.JFrame {
             initComponents();
             setLocation(415,100);
             setResizable(false);
-            jLabel1.setVisible(false);
+            
             //set internalplayer variable to the elements in the file passed in
             SessionHandler.load();
+            
+            //this if statement checks the player object to see if they have the pipboy equipped and then hides or displays the pipboy accordingly 
+            if(internalPlayer.inquirePipBoy() == false){
+                jLabel1.setVisible(false);
+            } else{
+                jLabel1.setVisible(true);
+            }
+
             //declare a vaultrooms object to call the starting method on
             VaultRooms vRooms = new VaultRooms();
             //declare a vaultlogic object to call the starting method on
             VaultLogic vLogic = new VaultLogic();
-            //This SOP statement prints to the console to check for the player position
-            System.out.println("Before switch statement + " + internalPlayer.getPlayerPosition());
+            
+            
+            
+            //This SOP statement prints to the console to check for the player position            
+            System.out.println("Before switch statement + " + internalPlayer.getPlayerPosition() + internalPlayer.inquirePipBoy());
             
             //switch statement that sets prompt and options after the user chooses to load a save, runs off internalplayer object which is 
             //the loaded player object from the sessionhandler.load() method
