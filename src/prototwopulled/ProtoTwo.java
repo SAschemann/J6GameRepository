@@ -23,7 +23,7 @@ public class ProtoTwo {
         catch (UnsupportedAudioFileException | IOException | 
                 LineUnavailableException ex){}
     
-        bgm.setTrack(0);
+        bgm.setTrack(0);//trying to push
         bgm.play();
         ProtoGUI newGUI = new ProtoGUI();
         newGUI.setVisible(true);
