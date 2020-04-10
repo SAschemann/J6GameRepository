@@ -7,6 +7,8 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import utilities.SessionHandler;
 import java.io.*;
+import java.lang.reflect.*;
+
 
 public class GameGUI extends javax.swing.JFrame {
 
@@ -19,19 +21,116 @@ public class GameGUI extends javax.swing.JFrame {
     //**Declared an object of type session handler to call the session ahndler on
     SessionHandler sesh = new SessionHandler();
     
+    //grabs the boolean variable startingState from ProtoGUI used in determining
+    //whether a new game is being created or loaded
     
-    
+    //New Game Constructor
     public GameGUI(UserPlayer player) {
-        initComponents();
-        setLocation(415,100);
-        setResizable(false);
-        jLabel1.setVisible(false);
-        //set internalplayer variable to the player variable which is passed in
-        internalPlayer = player;
-        //declare a vaultrooms object to call the starting method on
-        VaultRooms vRooms = new VaultRooms();
-        //this method call using the vRooms object created here sets the prompt and options for the first "room" at the start of the game.
-        vRooms.start();
+            initComponents();
+            setLocation(415,100);
+            setResizable(false);
+            jLabel1.setVisible(false);
+            //set internalplayer variable to the player variable which is passed in
+            internalPlayer = player;
+            //declare a vaultrooms object to call the starting method on
+            VaultRooms vRooms = new VaultRooms();
+            //this method call using the vRooms object created here sets the prompt and options for the first "room" at the start of the game.
+            vRooms.start();
+    }
+    
+    //Load game constructor, same as new game constructor but loads game functionality
+    public GameGUI(UserPlayer player, String str){
+            //SessionHandler.load();
+            //System.out.println(internalPlayer.getPlayerPosition());
+            initComponents();
+            setLocation(415,100);
+            setResizable(false);
+            
+            //set internalplayer variable to the elements in the file passed in
+            SessionHandler.load();
+            
+            //this if statement checks the player object to see if they have the pipboy equipped and then hides or displays the pipboy accordingly 
+            if(internalPlayer.inquirePipBoy() == false){
+                jLabel1.setVisible(false);
+            } else{
+                jLabel1.setVisible(true);
+            }
+
+            //declare a vaultrooms object to call the starting method on
+            VaultRooms vRooms = new VaultRooms();
+            //declare a vaultlogic object to call the starting method on
+            VaultLogic vLogic = new VaultLogic();
+            
+            
+            
+            //This SOP statement prints to the console to check for the player position            
+            System.out.println("Before switch statement + " + internalPlayer.getPlayerPosition() + internalPlayer.inquirePipBoy());
+            
+            //switch statement that sets prompt and options after the user chooses to load a save, runs off internalplayer object which is 
+            //the loaded player object from the sessionhandler.load() method
+            switch (internalPlayer.getPlayerPosition()){
+                
+                //each room will need a case, but that's not so bad for a save and load feature. 
+                case "firstDeadEnd":
+                    //this sop statement checks to make sure we're getting inside the switch statement
+                    System.out.println("Inside switch statement");
+                    //this method call sets the prompt and option for the firstDeadEndRoom
+                    vLogic.firstDeadEndRoom();
+                break;
+                
+                case "firstHallway":
+                    vLogic.firstHallway();
+                break;
+                
+                case "firstTerminalPartOne":
+                    vLogic.firstTerminalPartOne();
+                break;
+                
+                case "deadBody":
+                    vLogic.inspectDeadBody();
+                break;
+                
+                case "deadBodyEquipped":
+                    vLogic.inspectDeadBodyHasPipBoy();
+                break;
+                
+                case "startCont":
+                    vLogic.startCont();
+                break;
+                
+                case "endOfHallDoor":
+                    vLogic.endOfHallDoor();
+                break;
+                
+                case "bunkhouse":
+                    vLogic.bunkhouse();
+                break;
+                
+                case "showerRoom":
+                    vLogic.showerRoom();
+                break;
+                
+                case "firstTerminalPartTwo":
+                    vLogic.firstTerminalPartTwo();
+                break;
+                
+                case "bunkroom":
+                    vLogic.bunkroom();
+                break;
+                
+                case "maintenanceCloset":
+                    vLogic.maintenanceCloset();
+                break;
+                
+                case "upStairsLanding":
+                    vLogic.upStairsLanding();
+                break;
+                
+                case "arcingWires":
+                    vLogic.arcingWires();
+                break;
+
+            }//end of loading switch statement
     }
 
     /**
@@ -315,6 +414,7 @@ public class GameGUI extends javax.swing.JFrame {
     //This is the private nested class VaultRooms. It contains the methods which are called to set the game gui's prompts and options.
     private class VaultRooms{
     
+        
         //This is an example of what a room method would look like. It contains method calls to the game screen class's methods that set the prompt and 
         //options text. These options are able to be called on the game screen class because this is a nested class.
         public void start(){

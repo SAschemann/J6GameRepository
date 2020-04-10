@@ -19,6 +19,10 @@ public class UserPlayer {
         hasPipBoy = false;
     }
     
+    public void setHP(int health){
+        hp = health;
+    }
+    
     public void damageUpdateHP(int damage){
         hp = hp - damage;
     }
@@ -63,6 +67,10 @@ public class UserPlayer {
     
     public boolean inquirePipBoy(){
         return hasPipBoy;
+    }
+    
+    public void setPip(boolean boy){
+        hasPipBoy = boy;
     }
     
     //this comment is only a gitTest

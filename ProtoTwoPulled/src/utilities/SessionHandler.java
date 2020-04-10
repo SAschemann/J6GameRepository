@@ -20,28 +20,27 @@ public class SessionHandler implements Serializable {
     }
     
     //loads saved character file
-    /* commented out to temporarily to push the working save() functionality to repo
-    public void load(){
+    public static void load(){
         try{
-            
-            FileInputStream inputFile = new FileInputStream(filename);
-            ObjectInputStream objectIn =  new ObjectInputStream(inputFile);
-            temp = (UserPlayer)objectIn.readObject();
-            ProtoTwo.CUR_PLAYER = temp;
-            objectIn.close();
-            inputFile.close();    
+            UserPlayer load = new UserPlayer();
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream("test.txt"));
+            load.updateWeapon((String) in.readObject());
+            load.setHP((int) in.readObject());
+            load.updatePosition((String) in.readObject());
+            load.setPip((Boolean) in.readObject());
+            in.close();
+            GameGUI.internalPlayer = load;
         }
         catch(FileNotFoundException e ){
             System.err.print("data.sec not found");
         }
         catch(IOException e){
-            System.out.println("Error 201");
+            System.out.println("Error 201" + e);
         }
         catch(ClassNotFoundException e){
             System.out.println("Error 202");
         }
     }
-    *///end of load()
 
     
     //saves the current state of the character to a file
@@ -50,8 +49,9 @@ public class SessionHandler implements Serializable {
             UserPlayer temp = GameGUI.internalPlayer;
             System.out.println(temp.getPlayerPosition());
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("test.txt"));
-            out.writeObject(temp.getPlayerPosition());
+            out.writeObject(temp.getCurWeapon());
             out.writeObject(temp.getCurHP());
+            out.writeObject(temp.getPlayerPosition());
             out.writeObject(temp.inquirePipBoy());
             out.close();
         }   
@@ -65,10 +65,6 @@ public class SessionHandler implements Serializable {
             System.out.println("\nError 203:\n\t" + e); e.printStackTrace();
         } 
     }
-
-    public static void load(){}
-    
-    
 }
 
 
