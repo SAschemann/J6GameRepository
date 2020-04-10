@@ -84,11 +84,11 @@
                   <Component id="jLabel2" min="-2" pref="170" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" pref="42" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                   <Component id="jStart" min="-2" pref="64" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                   <Component id="jBLoad" min="-2" pref="64" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="293" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="211" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

@@ -5,7 +5,7 @@ package prototwopulled;
 //git test
 public class ProtoGUI extends javax.swing.JFrame {
     
-
+//Test April 9 Git
     
 
     public ProtoGUI() {
@@ -97,11 +97,11 @@ public class ProtoGUI extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(69, 69, 69)
                 .addComponent(jStart, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(49, 49, 49)
                 .addComponent(jBLoad, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(293, 293, 293))
+                .addGap(211, 211, 211))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
